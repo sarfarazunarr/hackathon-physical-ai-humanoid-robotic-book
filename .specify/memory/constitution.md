@@ -1,55 +1,56 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- Sync Impact Report:
+Version change: 0.0.0 (initial) -> 0.1.0
+Modified principles:
+  - PRINCIPLE_1_NAME -> Embodied Intelligence
+  - PRINCIPLE_2_NAME -> Stack Adherence
+  - PRINCIPLE_3_NAME -> Docusaurus Formatting
+  - PRINCIPLE_4_NAME -> Code Block Guidelines
+  - PRINCIPLE_5_NAME -> Tone and Mathematical Notation
+Added sections:
+  - Format & Style Guidelines
+Removed sections:
+  - PRINCIPLE_6_NAME and PRINCIPLE__DESCRIPTION (as they were unused in the template)
+Templates requiring updates:
+  - .specify/templates/plan-template.md: ⚠ pending
+  - .specify/templates/spec-template.md: ⚠ pending
+  - .specify/templates/tasks-template.md: ⚠ pending
+  - .specify/templates/commands/*.md: ⚠ pending
+Follow-up TODOs: None
+-->
+# Physical AI & Humanoid Robotics Textbook Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Embodied Intelligence
+Always link the "Digital Twin" Workstation (RTX 4070+) and the "Physical Edge" (Jetson Orin), emphasizing the transition from digital AI to embodied intelligence. This principle ensures that all educational content and practical exercises reinforce the symbiotic relationship between simulated and physical robotics.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Stack Adherence
+Strictly adhere to the specified technology stack: Ubuntu 22.04, ROS 2 Humble/Iron, NVIDIA Isaac Sim, and Python/C++. All examples, code snippets, and deployment instructions must be compatible with this stack to ensure a consistent and reliable learning environment.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Docusaurus Formatting
+All content must be formatted as Docusaurus Markdown (`.md` or `.mdx`) files. Every file must start with valid YAML frontmatter (id, title, sidebar_label, sidebar_position). Use Docusaurus admonitions (:::note, :::tip, :::warning, :::danger) heavily. `:::danger` must be used for hardware safety warnings (e.g., LiPo battery handling, robot pinch points). `:::warning` must be used for "Sim-to-Real" latency traps and version incompatibilities.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Code Block Guidelines
+All code must use triple backticks with language specification (e.g., ```python, ```bash). Differentiate clearly between commands run on the **Workstation** (Sim) vs. the **Edge Device** (Jetson) to avoid confusion during student implementation.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Tone and Mathematical Notation
+Maintain an academic yet practical tone. Content must be rigorous on theory and precise on implementation details. Use LaTeX ($) for physics equations (kinematics, dynamics) to ensure clarity and professional presentation, but use plain text for simple numbers and basic arithmetic.
 
-### [PRINCIPLE_6_NAME]
+## Format & Style Guidelines
 
+This section outlines additional guidelines for content creation to ensure consistency and high quality across the textbook.
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- **Output Format**: All content must be formatted as Docusaurus Markdown (`.md` or `.mdx`) files.
+- **Frontmatter**: Every file must start with valid YAML frontmatter (id, title, sidebar_label, sidebar_position).
+- **Admonitions**: Use Docusaurus admonitions (:::note, :::tip, :::warning, :::danger) heavily.
+    - Use `:::danger` for hardware safety warnings (e.g., LiPo battery handling, robot pinch points).
+    - Use `:::warning` for "Sim-to-Real" latency traps and version incompatibilities.
+- **Code Blocks**: All code must use triple backticks with language specification. Differentiate clearly between commands run on the **Workstation** (Sim) vs. the **Edge Device** (Jetson).
+- **Tone**: Academic yet practical. Rigorous on theory, precise on implementation.
+- **Math**: Use LaTeX ($) for physics equations (kinematics, dynamics), but plain text for simple numbers.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other practices. Amendments require documentation, approval, and a clear migration plan for any affected content. All content created for the textbook must verify compliance with these principles.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 0.1.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-04

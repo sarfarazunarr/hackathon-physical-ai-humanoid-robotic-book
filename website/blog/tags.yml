@@ -1,3 +1,15 @@
+robotics:
+  label: Robotics
+  permalink: /robotics
+  description: Articles about robotics
+physical-ai:
+  label: Physical AI
+  permalink: /physical-ai
+  description: Articles about Physical AI
+future-tech:
+  label: Future Tech
+  permalink: /future-tech
+  description: Articles about future technologies
 facebook:
   label: Facebook
   permalink: /facebook

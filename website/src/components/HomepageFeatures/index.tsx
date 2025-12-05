@@ -5,48 +5,54 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: string;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Module 1: The Robotic Nervous System',
+    icon: '⚡️',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Master ROS 2 (Humble/Iron), URDF modeling, and foundational communication with <code>rclpy</code>.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Module 2: The Digital Twin',
+    icon: '🌐',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Explore virtual environments with Gazebo and Unity, focusing on physics simulation and high-fidelity rendering.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Module 3: The AI-Robot Brain',
+    icon: '🧠',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Develop autonomous capabilities with NVIDIA Isaac Sim, Isaac ROS, Nav2, and Visual SLAM (VSLAM).
+      </>
+    ),
+  },
+  {
+    title: 'Module 4: Vision-Language-Action (VLA)',
+    icon: '💬',
+    description: (
+      <>
+        Build conversational autonomy by integrating OpenAI Whisper and LLMs to translate language into complex robot actions.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--3')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <span className={styles.featureIcon}>{icon}</span>
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
@@ -58,7 +64,7 @@ function Feature({title, Svg, description}: FeatureItem) {
 
 export default function HomepageFeatures(): ReactNode {
   return (
-    <section className={styles.features}>
+    <section className={clsx(styles.features, 'modules-container')}>
       <div className="container">
         <div className="row">
           {FeatureList.map((props, idx) => (

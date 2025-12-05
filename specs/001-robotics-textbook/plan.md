@@ -1,31 +1,23 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: Physical AI & Humanoid Robotics Textbook
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
-
-**Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
+**Branch**: `001-robotics-textbook` | **Date**: 2025-12-05 | **Spec**: E:\ai_dd\sp\hackathon\specs\001-robotics-textbook\spec.md
+**Input**: Feature specification from `/specs/001-robotics-textbook/spec.md`
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+This plan outlines the creation of a Docusaurus-based static site for a 13-week capstone course on Physical AI & Humanoid Robotics. The content will cover ROS 2, Digital Twins (Gazebo/Unity), AI-Robot Brains (Isaac Sim), and Vision-Language-Action (VLA) models, with a focus on practical application and sim-to-real transfer. All Docusaurus structural validation (sidebars, paths) will leverage the `context7` tools.
 
 ## Technical Context
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
-
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: JavaScript (Node.js for Docusaurus), Markdown/MDX
+**Primary Dependencies**: Docusaurus v3, React
+**Storage**: Local filesystem (for Docusaurus static assets)
+**Testing**: Docusaurus build validation, manual content review
+**Target Platform**: Web (static site)
+**Project Type**: Web (documentation site)
+**Performance Goals**: <3 seconds load time (SC-005)
+**Constraints**: Must adhere to Docusaurus sidebar structure and frontmatter conventions; explicit distinction between Gazebo and Unity for simulation (Module 2).
+**Scale/Scope**: 13 weeks of content, 4 modules, setup guides for local and cloud, covering specific hardware.
 
 ## Constitution Check
 
@@ -38,7 +30,7 @@
 ### Documentation (this feature)
 
 ```text
-specs/[###-feature]/
+specs/001-robotics-textbook/
 ├── plan.md              # This file (/sp.plan command output)
 ├── research.md          # Phase 0 output (/sp.plan command)
 ├── data-model.md        # Phase 1 output (/sp.plan command)
@@ -48,57 +40,44 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
-src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+docs/
+├── 01-intro/
+│   ├── 01-embodied-intelligence.md
+│   └── 02-physical-ai-philosophy.md
+├── 02-setup/
+│   ├── 01-workstation-rtx.md
+│   ├── 02-jetson-edge.md
+│   └── 03-realsense-imu-wiring.md
+├── 03-module-1/
+│   ├── 01-ros2-nodes.md
+│   ├── 02-ros2-topics.md
+│   ├── 03-ros2-services.md
+│   ├── 04-urdf-basics.md
+│   └── 05-rclpy-bridge.md
+├── 04-module-2/
+│   ├── 01-simulation-overview.md
+│   ├── 02-gazebo-physics-sim.md
+│   └── 03-unity-rendering.md
+├── 05-module-3/
+│   ├── 01-isaac-sim-intro.md
+│   └── 02-sim-to-real-transfer.md
+├── 06-module-4/
+│   ├── 01-openai-whisper.md
+│   ├── 02-llm-to-action.md
+│   └── 03-capstone-project.md
+└── 07-appendices/
+    ├── 01-cheatsheets.md
+    └── 02-troubleshooting.md
 
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+sidebars.js
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: The Docusaurus documentation will reside in the `docs/` directory, organized by numerically prefixed modules and sub-pages to enforce ordering. A single `sidebars.js` file will define the navigation structure, mirroring the module-then-week organization. The `.md` files will contain the content, including Docusaurus frontmatter.
 
 ## Complexity Tracking
 
-> **Fill ONLY if Constitution Check has violations that must be justified**
-
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| N/A | N/A | N/A |

@@ -1,12 +1,16 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #1a7f7a; /* Technical Teal */
+  /* 💡 LIGHT THEME DEFAULTS (Applied by default, used when data-theme='light' is active) */
+  
+  /* --- Page Body Colors --- */
+  /* This is critical: Set a light background and a dark font for light mode. */
+  --ifm-background-color: #ffffff; /* Light page background */
+  --ifm-font-color-base: #24292f; /* Dark text for light background */
+
+  /* --- Navbar/Header Colors (Overrides Docusaurus default) --- */
+  --ifm-navbar-background-color: #ffffff; /* Light header background */
+  --ifm-navbar-link-color: #24292f; /* Dark text on light header */
+  /* General Primary Colors */
+  --ifm-color-primary: #1a3d7f;
   --ifm-color-primary-dark: #17726d;
   --ifm-color-primary-darker: #156b66;
   --ifm-color-primary-darkest: #115854;
@@ -16,16 +20,22 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-  /* Custom variables */
-  --ifm-background-color: #0d1117;
-  --ifm-font-color-base: #c9d1d9;
+  /* Custom variables (Keep as is, they affect components you manually styled) */
   --ifm-font-family-base: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 [data-theme='dark'] {
-  --ifm-background-color: #0d1117;
-  --ifm-font-color-base: #c9d1d9;
-  --ifm-color-primary: #25c2a0;
+  /* 🌙 DARK THEME OVERRIDES (Applied when data-theme='dark' is active) */
+
+  /* --- Page Body Colors --- */
+  --ifm-background-color: #0d1117; /* Your custom dark background */
+  --ifm-font-color-base: #c9d1d9; /* Your custom light text */
+
+  /* --- Navbar/Header Colors --- */
+  --ifm-navbar-background-color: #161b22; /* A slightly lighter dark for header */
+  --ifm-navbar-link-color: #c9d1d9; /* Light text on dark header */
+  /* General Primary Colors */
+  --ifm-color-primary: #256cc2;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -35,11 +45,13 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-html[data-theme='dark'] {
-  --ifm-background-color: #0d1117;
-  --ifm-font-color-base: #c9d1d9;
-}
+/* 🗑️ Remove the redundant html[data-theme='dark'] block.
+   This block is unnecessary as [data-theme='dark'] already targets the html element. 
+   The original :root block in your CSS was the main cause of the issue, as it set a dark 
+   background/font for the light theme.
+*/
 
+/* Existing custom class styling (keep as is) */
 .button--secondary {
   background-color: var(--ifm-color-primary);
   color: white;

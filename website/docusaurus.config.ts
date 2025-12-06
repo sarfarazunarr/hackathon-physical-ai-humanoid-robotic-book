@@ -15,7 +15,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://sarfarazunarr.github.io/',
+  url: 'https://physical-ai-humanoid-robotics-omega.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -44,23 +44,9 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/sarfarazunarr/hackathon-physical-ai-humanoid-robotic-book/website/tree/main/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -75,9 +61,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Physical AI and Humonoid Robotics Course',
+      title: 'Physical AI and Humonoid Robotics',
       logo: {
-        alt: 'Physical AI and Humonoid Robotics Course',
+        alt: 'Physical AI and Humonoid Robotics',
         src: 'img/logo.svg',
       },
       items: [
@@ -87,9 +73,8 @@ const config: Config = {
           position: 'left',
           label: 'Start Learn',
         },
-        {to: '/blog/future-of-physical-ai', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/sarfarazunarr/hackathon-physical-ai-humanoid-robotic-book',
           label: 'GitHub',
           position: 'right',
         },
@@ -103,17 +88,13 @@ const config: Config = {
           items: [
             {
               label: 'Start Learning',
-              to: '/docs/01-intro/01-embodied-intelligence',
+              to: '/docs/intro/embodied-intelligence',
             },
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog/future-of-physical-ai',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/sarfarazunarr',

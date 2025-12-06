@@ -14,7 +14,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          The Cognitive Core: Bridging Digital Brains to Physical Bodies.
+          Bridging Digital Brains to Physical Bodies.
         </Heading>
         <p className="hero__subtitle">
           A 13-Week Capstone Course on Sim-to-Real Transfer, Vision-Language-Action (VLA), and Autonomous Humanoid Development.
@@ -47,6 +47,31 @@ function TechHardwareFocus() {
           <span>Jetson Orin Nano</span>
           <span>Intel RealSense</span>
           <span>OpenAI Whisper</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CourseOverviewVideo() {
+  return (
+    <div className={styles.section}>
+      <div className="container">
+        <div className="row">
+          <div className="col col--12">
+            <Heading as="h2">Course Overview Video</Heading>
+            <div className="video-container">
+              <iframe
+                width="100%"
+                height="500"
+                src="https://www.youtube.com/embed/jSLTn58Awik?si=_vxFFi4TL3kk6G_Q"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -97,7 +122,7 @@ export default function Home(): ReactNode {
         <HomepageFeatures />
         <TechHardwareFocus />
         <LearningOutcomes />
-        <p className="text--center">By Sarfaraz 00149474</p>
+        <CourseOverviewVideo />
       </main>
     </Layout>
   );

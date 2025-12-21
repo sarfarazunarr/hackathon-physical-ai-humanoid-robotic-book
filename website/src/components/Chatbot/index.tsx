@@ -20,7 +20,7 @@ const ChatBot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [showAllSources, setShowAllSources] = useState<{ [key: number]: boolean }>({});
   const [selection, setSelection] = useState({ visible: false, x: 0, y: 0, text: '' });
-  
+
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const initSession = async () => {
@@ -46,20 +46,39 @@ const ChatBot: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleMouseUp = () => {
+    const handleSelection = () => {
       const sel = window.getSelection();
       const text = sel?.toString().trim();
+
       if (text && text.length > 10) {
-        const rect = sel?.getRangeAt(0).getBoundingClientRect();
-        if (rect) {
-          setSelection({ visible: true, x: rect.left + (rect.width / 2), y: rect.top - 45, text });
+        // Get the bounding box of the selected text
+        const range = sel?.getRangeAt(0);
+        const rect = range?.getBoundingClientRect();
+
+        if (rect && rect.top !== 0) {
+          setSelection({
+            visible: true,
+            // Use fixed coordinates relative to viewport
+            x: rect.left + (rect.width / 2),
+            y: rect.top - 50, // Position above the selection
+            text: text,
+          });
         }
       } else {
-        setTimeout(() => setSelection(prev => ({ ...prev, visible: false })), 200);
+        // Hide if selection is cleared
+        setSelection((prev) => ({ ...prev, visible: false }));
       }
     };
-    document.addEventListener('mouseup', handleMouseUp);
-    return () => document.removeEventListener('mouseup', handleMouseUp);
+
+    // Desktop listener
+    document.addEventListener('mouseup', handleSelection);
+    // Mobile listener: selectionchange is much more reliable on iOS/Android
+    document.addEventListener('selectionchange', handleSelection);
+
+    return () => {
+      document.removeEventListener('mouseup', handleSelection);
+      document.removeEventListener('selectionchange', handleSelection);
+    };
   }, []);
 
   const handleSendMessage = async (textOverride?: string) => {
@@ -78,10 +97,10 @@ const ChatBot: React.FC = () => {
         body: JSON.stringify({ query, session_id: sessionId }),
       });
       const data = await response.json();
-      setMessages(prev => [...prev, { 
-        role: 'bot', 
-        content: cleanResponse(data.response), 
-        sources: data.sources 
+      setMessages(prev => [...prev, {
+        role: 'bot',
+        content: cleanResponse(data.response),
+        sources: data.sources
       }]);
     } catch (e) {
       setMessages(prev => [...prev, { role: 'bot', content: 'Connection failed.' }]);
@@ -98,7 +117,13 @@ const ChatBot: React.FC = () => {
       {selection.visible && (
         <button
           className={styles.selectionTooltip}
-          style={{ top: `${selection.y}px`, left: `${selection.x}px` }}
+          style={{
+            top: `${selection.y}px`,
+            left: `${selection.x}px`,
+            position: 'fixed', // Force fixed to handle mobile viewport scrolling
+            transform: 'translateX(-50%)', // Center based on the X coordinate
+            zIndex: 10001
+          }}
           onMouseDown={(e) => {
             e.preventDefault();
             handleSendMessage(`Explain this context: "${selection.text}"`);
@@ -112,7 +137,7 @@ const ChatBot: React.FC = () => {
       <div className={styles.chatbotContainer}>
         {!isOpen && (
           <button className={styles.chatToggle} onClick={() => setIsOpen(true)}>
-             <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.1 21.9l4.9-.762C8.47 21.513 10.179 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.1 21.9l4.9-.762C8.47 21.513 10.179 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" /></svg>
           </button>
         )}
 
@@ -163,7 +188,7 @@ const ChatBot: React.FC = () => {
             <div className={styles.chatInputArea}>
               <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSendMessage()} placeholder="Ask a question..." />
               <button className={styles.sendBtn} onClick={() => handleSendMessage()}>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
               </button>
             </div>
           </div>

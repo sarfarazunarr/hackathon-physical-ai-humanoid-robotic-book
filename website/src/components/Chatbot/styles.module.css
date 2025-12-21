@@ -58,3 +58,30 @@
 .chatInputArea { padding: 16px; background: #1e293b; border-top: 1px solid #334155; display: flex; gap: 10px; }
 .chatInputArea input { flex: 1; background: #0f172a; border: 1px solid #334155; color: white; padding: 12px; border-radius: 8px; }
 .sendBtn { background: #3b82f6; border: none; color: white; width: 44px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+
+@media (max-width: 480px) {
+  .chatbotContainer {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .chatWindow {
+    /* Fixed width was cutting it off. Use viewport-relative units. */
+    width: calc(100vw - 20px); 
+    height: 80vh; /* Adjust height to not cover the whole screen if preferred */
+    bottom: 70px; /* Position above the toggle button */
+  }
+
+  /* Adjust bubble size for smaller screens */
+  .bubble {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  /* Make tooltip larger and easier to tap on mobile */
+  .selectionTooltip {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
